@@ -5,9 +5,12 @@ with open(sys.argv[1], 'r') as test_cases:
 		if test == '':
 			continue
 
-		if len(test) > 55:
-			test = test.strip()[:41]
-			test = test[:test.rfind(" ")]
-			print("{}... <Read More>".format(test))
+		text = test.strip()
+		if len(text) <= 55:
+			print(text)
 		else:
-			print(test.strip())
+			text = text[:40]
+			index = text.rfind(' ')
+			if index != -1:
+				text = text[:index]
+			print(text + "... <Read More>")
